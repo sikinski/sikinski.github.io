@@ -1,0 +1,14 @@
+@use 'sass:map'
+
+// Mobile-first: базовые стили пишутся под 320px, дальше расширяем через from()
+$breakpoints: (xs: 375px, sm: 576px, md: 768px, lg: 1024px, xl: 1280px, xxl: 1440px, fhd: 1920px, qhd: 2560px)
+
+// Ширина от брейкпоинта и больше: @include from(md)
+@mixin from($bp)
+  @media (min-width: map.get($breakpoints, $bp))
+    @content
+
+// Ширина меньше брейкпоинта: @include to(md)
+@mixin to($bp)
+  @media (max-width: map.get($breakpoints, $bp) - 0.02px)
+    @content

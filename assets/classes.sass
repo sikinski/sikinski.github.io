@@ -1,0 +1,12 @@
+@use 'adaptive' as *
+
+.page-padding
+  padding-inline: 16px
+
+  @include from(md)
+    padding-inline: 32px
+
+  @include from(xl)
+    padding-inline: 64px
+
+// .main-button — добавим после выбора дизайна
