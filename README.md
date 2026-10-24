@@ -31,4 +31,4 @@ pnpm preview
 
 GitHub Pages через GitHub Actions ([.github/workflows/deploy.yml](.github/workflows/deploy.yml)):
 каждый push в `main` собирает статику (`pnpm generate`) и публикует `.output/public`.
-Свой домен задан в `public/CNAME` — `sikinski.dev`.
+Сайт открывается на https://sikinski.github.io (репозиторий `sikinski.github.io`). Для своего домена добавьте `public/CNAME`.
