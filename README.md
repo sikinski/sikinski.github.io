@@ -1,75 +1,34 @@
-# Nuxt Minimal Starter
+# sikinski.dev
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Личный сайт-портфолио: разработка сайтов на Vue 3 и Nuxt 4, кейсы и AI-ассистенты.
 
-## Setup
-
-Make sure to install dependencies:
+## Запуск
 
 ```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
+pnpm dev        # http://localhost:3000
+pnpm build      # продакшн-сборка в .output
 pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Адрес сайта для canonical, Open Graph и sitemap задаётся в `nuxt.config.js` (`runtimeConfig.public.siteUrl`)
+или переменной окружения `NUXT_PUBLIC_SITE_URL`.
+
+## Где что лежит
+
+| Что | Где |
+|---|---|
+| Страницы | `pages/` — главная, `/cases`, `/cases/[slug]`, `/about`, `/contacts` |
+| Секции и компоненты | `components/` |
+| Проекты портфолио (тексты, факты, скриншоты) | `shared/projects.js` |
+| Цвета, сброс, общие классы, брейкпоинты | `assets/*.sass` |
+| Картинки проектов | `public/images/projects/<slug>.webp` — обложка, `<slug>/01.webp…` — скриншоты |
+| sitemap.xml и robots.txt | `server/routes/` |
+
+Чтобы скрыть проект, поставьте ему `draft: true` в `shared/projects.js`.
+
+## Деплой
+
+GitHub Pages через GitHub Actions ([.github/workflows/deploy.yml](.github/workflows/deploy.yml)):
+каждый push в `main` собирает статику (`pnpm generate`) и публикует `.output/public`.
+Свой домен задан в `public/CNAME` — `sikinski.dev`.
