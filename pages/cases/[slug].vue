@@ -4,7 +4,7 @@
       <div class="container page-padding">
         <div class="layout grid crosses">
           <div class="aside">
-            <NuxtLink to="/cases" class="back">← Все проекты</NuxtLink>
+            <NuxtLink :to="project.category === 'web' ? '/cases?tab=web' : '/cases'" class="back">← Все проекты</NuxtLink>
             <span class="label">{{ project.type }}</span>
           </div>
 

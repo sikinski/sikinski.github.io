@@ -2,7 +2,7 @@
   <section id="stats" class="stats section">
     <div class="container page-padding">
       <div class="head grid crosses">
-        <span class="head-label label">02 Обзор</span>
+        <span class="head-label label">05 Обзор</span>
         <h2 class="heading title-xl">В цифрах</h2>
       </div>
 
@@ -31,25 +31,25 @@
 const stats = [
   {
     label: 'Опыт',
-    title: 'Frontend на Vue 3 и Nuxt 4',
-    text: 'SPA, SSR и SSG. Руководила командой из пяти фронтенд-разработчиков: code review, наставничество, распределение задач.',
-    value: '4+',
-    caption: 'года коммерческой разработки'
+    title: 'FullStack: Vue 3, Nuxt 4, Node.js',
+    text: 'Фронтенд, бэкенд, базы данных и деплой. Руководила командой из пяти разработчиков: архитектура, code review, наставничество.',
+    value: '5+',
+    caption: 'лет в разработке'
   },
   {
     label: 'Проекты',
     title: 'Довожу до релиза',
-    text: 'Лендинги, корпоративные сайты, интернет-магазины, админ-панели и Telegram Mini Apps.',
+    text: 'Интернет-магазины, PWA, админ-панели, Telegram Mini Apps, боты и AI-ассистенты.',
     value: '30+',
     caption: 'завершённых проектов'
   },
   {
     label: 'Интеграции',
     title: 'Подключаю нужные сервисы',
-    text: 'Оплата, доставка, карты, аналитика, авторизация и внешние API.',
+    text: 'Оплата, доставка, карты, аналитика, авторизация, нейросети и внешние API.',
     tags: [
-      'ЮKassa', 'СДЭК', 'СДЭК Pay', 'Яндекс.Карты', 'Яндекс.Метрика', 'Google Analytics',
-      'Telegram', 'VK', 'Email-рассылки', 'OAuth', 'JWT', 'REST API', 'WebSocket', 'LLM API', 'Docker'
+      'ЮKassa', 'СДЭК', 'СДЭК Pay', 'Яндекс.Карты', 'Яндекс.Метрика', 'Telegram Bot API',
+      'VK', 'OAuth', 'JWT', 'REST API', 'WebSocket', 'LLM API', 'PostgreSQL', 'Docker'
     ]
   },
   {
@@ -64,7 +64,7 @@ const stats = [
 
 <style lang="sass" scoped>
 .stats
-  background: var(--color-bg-deep)
+  background: var(--color-bg)
 
   .head
     row-gap: 24px
@@ -98,7 +98,9 @@ const stats = [
     position: relative
     display: flex
     flex-direction: column
-    min-height: clamp(340px, 30vw, 560px)
+
+    @include from(sm)
+      min-height: clamp(340px, 30vw, 560px)
     padding: 28px 16px 32px
     border-bottom: 1px solid var(--color-line)
     transition: background 0.4s
@@ -143,12 +145,17 @@ const stats = [
     line-height: 1.2
     letter-spacing: -0.01em
 
+  // На телефоне хватает заголовка и цифры
   .item-text
+    display: none
     margin-top: 16px
     max-width: 340px
     font-size: 15px
     line-height: 1.6
     color: var(--color-text-secondary)
+
+    @include from(sm)
+      display: block
 
   .item-bottom
     display: flex

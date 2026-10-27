@@ -60,6 +60,7 @@ const isOpen = ref(false)
 
 const links = [
   { title: 'Опыт', to: '/#experience' },
+  { title: 'Услуги', to: '/#services' },
   { title: 'Кейсы', to: '/cases' },
   { title: 'Обо мне', to: '/about' },
   { title: 'Контакты', to: '/contacts' }

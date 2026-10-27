@@ -3,20 +3,34 @@
     <div class="container page-padding">
       <div class="head grid crosses">
         <span class="head-label label">04 Портфолио</span>
-        <h2 class="heading title-xl">Проекты</h2>
+        <div class="head-content">
+          <h2 class="title-xl">Проекты</h2>
+          <ProjectTabs v-model="activeTab" :tabs="projectTabs" />
+        </div>
       </div>
 
-      <ProjectsGrid :items="webProjects" />
+      <div
+        v-for="tab in projectTabs"
+        v-show="activeTab === tab.id"
+        :id="`panel-${tab.id}`"
+        :key="tab.id"
+        role="tabpanel"
+        :aria-labelledby="`tab-${tab.id}`"
+      >
+        <ProjectsGrid :items="tab.items" />
+      </div>
 
       <div class="more">
-        <NuxtLink to="/cases" class="ghost-button">Все кейсы</NuxtLink>
+        <NuxtLink :to="activeTab === 'ai' ? '/cases' : '/cases?tab=web'" class="ghost-button">Все кейсы</NuxtLink>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { webProjects } from '#shared/projects'
+import { projectTabs } from '#shared/projects'
+
+const activeTab = ref(projectTabs[0].id)
 </script>
 
 <style lang="sass" scoped>
@@ -35,8 +49,11 @@ import { webProjects } from '#shared/projects'
       grid-column: 1
       padding-top: 12px
 
-  .heading
+  .head-content
     grid-column: 1 / -1
+    display: grid
+    justify-items: start
+    gap: clamp(24px, 3vw, 40px)
 
     @include from(lg)
       grid-column: 2 / 5

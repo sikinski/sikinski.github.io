@@ -2,24 +2,27 @@
   <div>
     <HeroSection />
     <IntroSection />
-    <StatsSection />
     <ExperienceSection />
+    <ServicesSection />
     <ProjectsSection />
+    <StatsSection />
   </div>
 </template>
 
 <script setup>
+import { serviceGroups } from '#shared/services'
+
 const { siteUrl } = useRuntimeConfig().public
 
-const description = 'Разработка сайтов, лендингов, интернет-магазинов и веб-приложений на Vue 3 и Nuxt 4, а также AI-ассистентов и Telegram-ботов. '
-  + 'Быстрая загрузка, SEO-оптимизация, адаптивная вёрстка и интеграции с нужными сервисами.'
+const description = 'Разработка под ключ: интернет-магазины с оплатой и доставкой, PWA-приложения, Telegram-боты и AI-ассистенты. '
+  + 'FullStack-разработчица и AI-инженер с опытом 5+ лет.'
 
 useSiteSeo({
-  title: 'Разработка сайтов и AI-ассистентов под ключ — sikinski.dev',
+  title: 'Разработка сайтов, Telegram-ботов и AI-ассистентов под ключ — sikinski.dev',
   description
 })
 
-const services = ['Разработка лендингов', 'Разработка корпоративных сайтов', 'Разработка интернет-магазинов', 'Разработка веб-приложений']
+const services = serviceGroups.flatMap(group => group.items)
 
 // Микроразметка: кто делает и какие услуги — поисковики показывают это в расширенной выдаче
 useHead({
@@ -33,11 +36,11 @@ useHead({
           '@id': `${siteUrl}/#person`,
           name: 'Ульяна',
           alternateName: 'sikinski',
-          jobTitle: 'Frontend-разработчица',
+          jobTitle: 'FullStack-разработчица, AI-инженер',
           url: siteUrl,
-          image: `${siteUrl}/images/portrait.jpg`,
+          image: `${siteUrl}/images/portrait-2.jpg`,
           email: 'mailto:ulyana.sikinski@gmail.com',
-          knowsAbout: ['Vue 3', 'Nuxt 4', 'JavaScript', 'Node.js', 'SEO', 'AI-ассистенты'],
+          knowsAbout: ['AI-ассистенты', 'LLM', 'Telegram-боты', 'PWA', 'Node.js', 'Vue 3', 'Nuxt 4', 'PostgreSQL', 'Docker'],
           sameAs: [
             'https://t.me/sikinski',
             'https://github.com/sikinski',
@@ -49,17 +52,19 @@ useHead({
         {
           '@type': 'Service',
           '@id': `${siteUrl}/#service`,
-          name: 'Разработка сайтов',
-          serviceType: 'Разработка сайтов',
+          name: 'Разработка сайтов, ботов и AI-ассистентов',
+          serviceType: 'Разработка программного обеспечения',
           description,
           url: siteUrl,
           provider: { '@id': `${siteUrl}/#person` },
           hasOfferCatalog: {
             '@type': 'OfferCatalog',
             name: 'Услуги',
-            itemListElement: services.map(name => ({
+            itemListElement: services.map(item => ({
               '@type': 'Offer',
-              itemOffered: { '@type': 'Service', name }
+              price: item.price,
+              priceCurrency: 'RUB',
+              itemOffered: { '@type': 'Service', name: item.name, description: item.text }
             }))
           }
         }

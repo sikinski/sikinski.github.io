@@ -4,27 +4,27 @@
 
     <div class="inner container page-padding">
       <div class="top">
-        <span class="label">Frontend · Fullstack</span>
+        <span class="label">FullStack · AI-инженер</span>
         <span class="year">Портфолио / 2026</span>
       </div>
 
       <h1 class="heading">
         <span class="title-line">Разработка</span>
-        <!-- Неразрывный дефис: «AI‑ассистентов» не переносится -->
-        <span class="title-line accent">сайтов</span>
-        <span class="title-line accent">и AI‑ассистентов</span>
+        <!-- Неразрывный дефис: «ТГ‑ботов» и «AI‑ассистентов» не переносятся -->
+        <span class="title-line accent">сайтов, ТГ‑ботов,</span>
+        <span class="title-line accent">AI‑ассистентов</span>
       </h1>
 
       <div class="content">
         <p class="subtitle">
-          Под ключ на Vue 3 <span class="subtitle-accent">/</span> <span class="nowrap">Nuxt 4</span>
+          AI-инженер <span class="subtitle-accent">/</span> <span class="nowrap">5+ лет</span> в программировании
         </p>
         <p class="lead">
-          Создаю быстрые и удобные сайты с SEO-оптимизацией — от лендинга до интернет-магазина
-          и веб-приложения. Адаптивная вёрстка под любые экраны, интеграции с оплатой, доставкой и аналитикой.
+          Под ключ: интернет-магазины с онлайн-оплатой и доставкой, мобильные PWA-приложения,
+          AI-боты в мессенджерах и личные ассистенты, которые работают на ваш бизнес 24/7.
         </p>
         <p class="note">
-          Нужен бэкенд — тоже сделаю: Node.js, API и базы данных с помощью AI-инструментов.
+          Весь цикл на мне: архитектура, фронтенд, бэкенд, базы данных, интеграции и деплой.
         </p>
         <div class="actions">
           <NuxtLink to="/cases" class="main-button">Смотреть кейсы</NuxtLink>
@@ -44,10 +44,10 @@
 
 <script setup>
 const services = [
-  { index: '01', title: 'Лендинги' },
-  { index: '02', title: 'Корпоративные сайты' },
-  { index: '03', title: 'Интернет-магазины' },
-  { index: '04', title: 'Веб-приложения' }
+  { index: '01', title: 'Интернет-магазины' },
+  { index: '02', title: 'PWA-приложения' },
+  { index: '03', title: 'Telegram-боты' },
+  { index: '04', title: 'AI-ассистенты' }
 ]
 </script>
 
@@ -134,12 +134,16 @@ const services = [
     color: var(--color-neon)
     text-shadow: 0 0 16px var(--color-neon-glow)
 
+  // На телефоне прячем: первый экран и так плотный
   .note
-    display: flex
+    display: none
     gap: 12px
     font-size: 15px
     line-height: 1.5
     color: var(--color-text-secondary)
+
+    @include from(md)
+      display: flex
 
     &::before
       content: '+'

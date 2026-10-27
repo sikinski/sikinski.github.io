@@ -7,29 +7,13 @@
           <div class="head-content">
             <h1 class="title-xl">Кейсы</h1>
 
-            <div class="tabs" role="tablist" aria-label="Разделы портфолио">
-              <button
-                v-for="tab in tabs"
-                :id="`tab-${tab.id}`"
-                :key="tab.id"
-                type="button"
-                role="tab"
-                class="tab"
-                :class="{ active: activeTab === tab.id }"
-                :aria-selected="activeTab === tab.id"
-                :aria-controls="`panel-${tab.id}`"
-                @click="selectTab(tab.id)"
-              >
-                {{ tab.title }}
-                <span class="tab-count">{{ tab.items.length }}</span>
-              </button>
-            </div>
+            <ProjectTabs :model-value="activeTab" :tabs="projectTabs" @update:model-value="selectTab" />
           </div>
         </div>
 
         <!-- Оба раздела в разметке, чтобы поисковики видели все кейсы -->
         <div
-          v-for="tab in tabs"
+          v-for="tab in projectTabs"
           v-show="activeTab === tab.id"
           :id="`panel-${tab.id}`"
           :key="tab.id"
@@ -46,31 +30,21 @@
 </template>
 
 <script setup>
-import { webProjects, aiProjects } from '#shared/projects'
+import { projectTabs } from '#shared/projects'
 
 const route = useRoute()
 const router = useRouter()
 
-const tabs = [
-  { id: 'web', title: 'Web', items: webProjects },
-  {
-    id: 'ai',
-    title: 'AI-ассистенты',
-    items: aiProjects,
-    empty: 'Скоро здесь появятся мои AI-ассистенты — расскажу, что они умеют и как помогают в работе.'
-  }
-]
-
-// Раздел хранится в адресе, чтобы ссылкой можно было поделиться
-const activeTab = computed(() => (route.query.tab === 'ai' ? 'ai' : 'web'))
+// Раздел хранится в адресе, чтобы ссылкой можно было поделиться; по умолчанию — AI-ассистенты
+const activeTab = computed(() => (route.query.tab === 'web' ? 'web' : 'ai'))
 
 const selectTab = (id) => {
-  router.replace({ query: id === 'web' ? {} : { tab: id } })
+  router.replace({ query: id === 'ai' ? {} : { tab: id } })
 }
 
 useSiteSeo({
-  title: 'Кейсы — разработка сайтов и AI-ассистентов | sikinski.dev',
-  description: 'Портфолио: маркетплейсы, интернет-магазины, многостраничные сайты и корпоративные порталы на Vue и Nuxt, а также AI-ассистенты.',
+  title: 'Кейсы — AI-ассистенты, боты и сайты | sikinski.dev',
+  description: 'Портфолио: AI-ассистенты и Telegram-боты, маркетплейсы, интернет-магазины, многостраничные сайты и корпоративные порталы под ключ.',
   path: '/cases'
 })
 </script>
@@ -101,37 +75,6 @@ useSiteSeo({
   @include from(lg)
     grid-column: 2 / 5
     padding-left: 24px
-
-.tabs
-  display: flex
-  flex-wrap: wrap
-  border: 1px solid var(--color-line-strong)
-
-.tab
-  display: inline-flex
-  align-items: center
-  gap: 10px
-  padding: 14px 24px
-  font-size: 12px
-  font-weight: 700
-  letter-spacing: 0.14em
-  text-transform: uppercase
-  color: var(--color-text-secondary)
-  transition: color 0.3s, background-color 0.3s
-
-  & + .tab
-    border-left: 1px solid var(--color-line-strong)
-
-  &:hover
-    color: var(--color-text)
-
-  &.active
-    background: var(--color-accent)
-    color: var(--color-bg-deep)
-
-.tab-count
-  font-size: 10px
-  opacity: 0.7
 
 .panel
   padding-bottom: clamp(64px, 8vw, 140px)

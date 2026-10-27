@@ -2,12 +2,12 @@
   <section id="experience" class="experience section">
     <div class="container page-padding">
       <div class="head grid crosses">
-        <span class="head-label label">03 Карьера</span>
+        <span class="head-label label">02 Карьера</span>
         <h2 class="heading title-xl">Опыт работы</h2>
       </div>
 
       <ol class="list">
-        <li v-for="(job, i) in jobs" :key="job.context" class="item grid">
+        <li v-for="(job, i) in jobs" :key="job.context" class="item grid" :class="{ open: opened.includes(i) }">
           <div class="meta">
             <span class="index">0{{ i + 1 }}</span>
             <span class="type">{{ job.type }}</span>
@@ -15,9 +15,21 @@
             <span class="years">{{ job.years }}</span>
           </div>
 
+          <!-- Вклад и стек раскрываются по стрелке -->
+          <button
+            type="button"
+            class="toggle"
+            :aria-expanded="opened.includes(i)"
+            :aria-controls="`job-${i}`"
+            :aria-label="opened.includes(i) ? 'Свернуть' : 'Подробнее'"
+            @click="toggle(i)"
+          >
+            <span class="toggle-arrow">↓</span>
+          </button>
+
           <div class="content">
             <h3 class="context">{{ job.context }}</h3>
-            <ul class="points">
+            <ul :id="`job-${i}`" class="points">
               <li v-for="point in job.points" :key="point">{{ point }}</li>
             </ul>
           </div>
@@ -32,14 +44,37 @@
 </template>
 
 <script setup>
+const opened = ref([])
+
+const toggle = (i) => {
+  opened.value = opened.value.includes(i)
+    ? opened.value.filter(item => item !== i)
+    : [...opened.value, i]
+}
+
 const jobs = [
+  {
+    type: 'AI-разработка',
+    years: '2025–2026 гг.',
+    role: 'AI-инженер',
+    context: 'AI-ассистенты и Telegram-боты',
+    points: [
+      'Проектирую и запускаю AI-ассистентов под ключ: от сценария до сервера и деплоя.',
+      'Встраиваю LLM в бизнес-процессы: анализ и фильтрация данных, оценка, генерация текстов.',
+      'Пишу промпты со структурированным ответом, которым можно доверять в автоматике.',
+      'Собираю данные по расписанию с внешних площадок и API.',
+      'Telegram-боты на grammY: inline-кнопки, редактирование ответов, история действий.',
+      'AI-driven разработка: архитектура и контроль качества на мне, рутинный код — на нейросетях.'
+    ],
+    stack: ['Node.js', 'Fastify', 'grammY', 'Telegram Bot API', 'LLM API', 'Groq', 'Prisma', 'PostgreSQL', 'Docker', 'Claude', 'Cursor']
+  },
   {
     type: 'E-commerce',
     years: '2026 г.',
-    role: 'Frontend-разработчица',
+    role: 'FullStack-разработчица',
     context: 'Интернет-магазин и Telegram Mini App',
     points: [
-      'Спроектировала и собрала фронтенд магазина с нуля: каталог, корзина, оформление заказа.',
+      'Спроектировала и собрала магазин с нуля: каталог, корзина, оформление заказа.',
       'Развивала существующий e-commerce-код: новый функционал, багфиксы, рефакторинг legacy.',
       'Разработала Telegram Mini App с интеграцией через REST API.',
       'Подключила оплату ЮKassa и СДЭК Pay: webhook и обработка статусов платежа.',
@@ -51,27 +86,27 @@ const jobs = [
   {
     type: 'Веб-студия',
     years: '2022–2025 гг.',
-    role: 'Lead Frontend-разработчица',
+    role: 'Lead-разработчица',
     context: 'Коммерческие проекты для клиентов студии',
     points: [
-      'Руководила командой до 5 frontend-разработчиков: code review, наставничество, распределение задач.',
+      'Руководила командой до 5 разработчиков: архитектура, code review, наставничество, распределение задач.',
       'Вела проекты полного цикла: от общения с заказчиком и бизнес-логики до сборки и деплоя.',
       'SPA и SSR с упором на SEO и Core Web Vitals: code splitting, сжатие бандлов, оптимизация изображений.',
       'Авторизация через JWT и OAuth, middleware, административные панели.',
       'Интеграции: платёжные системы, карты, аналитика, email-сервисы и внешние API.',
-      'Адаптивная семантичная вёрстка по Figma, а иногда и собственный дизайн.'
+      'Собственный дизайн интерфейсов, когда у заказчика нет макета.'
     ],
     stack: ['Vue 3', 'Nuxt', 'Vite', 'JWT', 'OAuth', 'Lighthouse', 'Яндекс.Метрика', 'Google Analytics', 'OpenStreetMap', 'Figma', 'Docker', 'Nginx']
   },
   {
     type: 'Enterprise',
     years: '2023–2025 гг.',
-    role: 'Frontend-разработчица',
+    role: 'FullStack-разработчица',
     context: 'Корпоративные системы промышленного предприятия',
     points: [
       'Интерфейсы корпоративных SPA/SSR-приложений и административных систем.',
       'Модули авторизации и управления доступом, внутренние микросервисы.',
-      'Интеграция с backend по REST API и WebSocket.',
+      'Клиент-серверное взаимодействие по REST API и WebSocket в реальном времени.',
       'Оптимизация бандлов, инфраструктура на Docker и Nginx.',
       'Работа в Agile-команде: спринты, стендапы, MVP-подход.'
     ],
@@ -80,11 +115,10 @@ const jobs = [
   {
     type: 'Фриланс',
     years: '2020 г.',
-    role: 'Верстальщица',
-    context: 'Лендинги и веб-страницы для заказчиков',
+    role: 'Веб-разработчица',
+    context: 'Первые коммерческие сайты для заказчиков',
     points: [
-      'Вёрстка по макетам Figma в pixel perfect.',
-      'Адаптивность под любые устройства и кроссбраузерность.',
+      'Сайты под ключ: от макета в Figma до публикации.',
       'Работа с заказчиками напрямую: требования, сроки, сдача проекта.'
     ],
     stack: ['HTML', 'CSS / Sass', 'JavaScript', 'Figma']
@@ -94,7 +128,7 @@ const jobs = [
 
 <style lang="sass" scoped>
 .experience
-  background: var(--color-bg)
+  background: var(--color-bg-deep)
 
   .head
     row-gap: 24px
@@ -120,9 +154,19 @@ const jobs = [
 
   .item
     position: relative
-    row-gap: 28px
+    row-gap: 20px
     padding-block: clamp(32px, 3vw, 48px)
     border-top: 1px solid var(--color-line-strong)
+
+    &:not(.open)
+      .points,
+      .stack
+        display: none
+
+    &.open
+      .points,
+      .stack
+        animation: reveal 0.4s ease
 
     // Неоновая грань сверху при наведении — как у карточек «В цифрах»
     &::before
@@ -147,6 +191,35 @@ const jobs = [
         color: var(--color-neon)
         text-shadow: 0 0 12px var(--color-neon-glow)
 
+  // Стрелка аккордеона
+
+  .toggle
+    position: absolute
+    top: clamp(32px, 3vw, 48px)
+    right: 0
+    display: grid
+    place-items: center
+    width: 40px
+    height: 40px
+    border: 1px solid var(--color-line-strong)
+    color: var(--color-text-secondary)
+    transition: color 0.3s, border-color 0.3s
+
+    &:hover
+      border-color: var(--color-neon)
+      color: var(--color-neon)
+
+  .toggle-arrow
+    display: block
+    transition: transform 0.3s
+
+  .open .toggle
+    border-color: var(--color-neon)
+    color: var(--color-neon)
+
+    .toggle-arrow
+      transform: rotate(180deg)
+
   // Слева: номер, тип, роль
 
   .meta
@@ -155,6 +228,8 @@ const jobs = [
     grid-template-columns: auto 1fr
     align-content: start
     gap: 6px 16px
+    // Место под стрелку аккордеона
+    padding-right: 56px
 
     @include from(lg)
       grid-column: 1
@@ -232,7 +307,8 @@ const jobs = [
 
     @include from(lg)
       grid-column: 4
-      padding-left: 24px
+      // Справа — место под стрелку аккордеона
+      padding-inline: 24px 56px
 
   .tech
     padding: 6px 10px
@@ -241,4 +317,9 @@ const jobs = [
     font-weight: 600
     letter-spacing: 0.06em
     color: var(--color-text-secondary)
+
+@keyframes reveal
+  from
+    opacity: 0
+    transform: translateY(-8px)
 </style>

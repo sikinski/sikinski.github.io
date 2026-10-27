@@ -32,7 +32,7 @@
 
       <footer class="footer">
         <span>© 2026 sikinski.dev</span>
-        <span class="footer-middle">Разработка сайтов на Vue 3 и Nuxt 4</span>
+        <span class="footer-middle">Сайты, боты и AI-ассистенты под ключ</span>
         <a href="#" class="up">Наверх ↑</a>
       </footer>
     </div>
