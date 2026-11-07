@@ -52,6 +52,7 @@ const main = [
 
 const profiles = [
   { label: 'GitHub', note: 'Код', href: 'https://github.com/sikinski' },
+  { label: 'LinkedIn', note: 'Профиль', href: 'https://www.linkedin.com/in/sikinski/' },
   { label: 'Kwork', note: 'Услуги', href: 'https://kwork.ru/user/sikinski' },
   { label: 'FL.ru', note: 'Портфолио', href: 'https://www.fl.ru/users/ulyanasikinski/portfolio/' },
   { label: 'hh.ru', note: 'Резюме', href: 'https://hh.ru/resume/183455daff0efd59760039ed1f613136313633' }

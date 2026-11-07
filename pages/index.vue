@@ -44,6 +44,7 @@ useHead({
           sameAs: [
             'https://t.me/sikinski',
             'https://github.com/sikinski',
+            'https://www.linkedin.com/in/sikinski/',
             'https://kwork.ru/user/sikinski',
             'https://www.fl.ru/users/ulyanasikinski/portfolio/',
             'https://hh.ru/resume/183455daff0efd59760039ed1f613136313633'
