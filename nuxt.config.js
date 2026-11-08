@@ -6,6 +6,14 @@ export default defineNuxtConfig({
   // Исходники лежат в корне проекта, а не в app/
   srcDir: '.',
 
+  modules: ['@artmizu/yandex-metrika-nuxt'],
+
+  // Яндекс Метрика: ID берётся из NUXT_PUBLIC_YANDEX_METRIKA_ID (.env / CI).
+  // Счётчик подключается только в production-сборке, в dev — лишь логи целей
+  yandexMetrika: {
+    id: process.env.NUXT_PUBLIC_YANDEX_METRIKA_ID || ''
+  },
+
   app: {
     head: {
       htmlAttrs: { lang: 'ru' },

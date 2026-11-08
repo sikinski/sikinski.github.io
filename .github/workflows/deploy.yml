@@ -38,6 +38,8 @@ jobs:
       # Сайт живёт на своём домене sikinski.dev, поэтому baseURL — корень
       - name: Generate
         run: pnpm generate
+        env:
+          NUXT_PUBLIC_YANDEX_METRIKA_ID: '114135373'
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
