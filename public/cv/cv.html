@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ulyana Fomina — CV</title>
+<!-- Резюме для откликов. Правишь этот файл → npm run build-cv → cv/Ulyana_Fomina_CV.pdf -->
+<style>
+  @page { size: A4; margin: 11mm 14mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif; font-size: 9.4pt; line-height: 1.36; color: #1d1d1f; margin: 0; }
+  h1 { font-size: 21pt; margin: 0; letter-spacing: -0.3px; }
+  .role { font-size: 11.5pt; color: #c2410c; font-weight: 600; margin: 2px 0 6px; }
+  .contacts { font-size: 9pt; color: #444; }
+  .contacts a { color: #444; text-decoration: none; }
+  .contacts span + span::before { content: "·"; margin: 0 6px; color: #aaa; }
+  h2 { font-size: 10.5pt; text-transform: uppercase; letter-spacing: 1px; color: #c2410c; border-bottom: 1px solid #e5e5e5; padding-bottom: 3px; margin: 10px 0 5px; }
+  p { margin: 0 0 6px; }
+  .job { margin-bottom: 6px; break-inside: avoid; }
+  .job-head { display: flex; justify-content: space-between; gap: 12px; }
+  .job-title { font-weight: 700; }
+  .job-company { color: #444; }
+  .job-dates { color: #666; white-space: nowrap; font-size: 9pt; }
+  ul { margin: 3px 0 0; padding-left: 16px; }
+  li { margin-bottom: 1px; }
+  .stack { font-size: 8.8pt; color: #555; margin-top: 3px; }
+  .skills div { display: grid; grid-template-columns: 82px 1fr; gap: 8px; margin-bottom: 2px; }
+</style>
+</head>
+<body>
+
+<h1>Ulyana Fomina</h1>
+<div class="role">Frontend / AI Engineer — Vue 3, Nuxt, Node.js, LLM integrations</div>
+<div class="contacts">
+  <span>23 y.o.</span>
+  <span>Chelyabinsk, Russia (UTC+5) — remote only</span>
+  <span><a href="mailto:ulyana.sikinski@gmail.com">ulyana.sikinski@gmail.com</a></span>
+  <span>+7 922 708-67-19</span>
+</div>
+<div class="contacts">
+  <span><a href="https://www.linkedin.com/in/sikinski/">linkedin.com/in/sikinski</a></span>
+  <span><a href="https://github.com/sikinski">github.com/sikinski</a></span>
+  <span><a href="https://sikinski.github.io">sikinski.github.io</a></span>
+  <span><a href="https://t.me/sikinski">t.me/sikinski</a></span>
+</div>
+
+<h2>Summary</h2>
+<p>Frontend-focused full-stack developer with 4+ years of commercial experience building SPA/SSR applications,
+e-commerce and internal enterprise systems on Vue 3 / Nuxt. Led a frontend team of up to 5 developers.
+I work AI-first every day (Claude Code, Cursor) and build LLM-powered assistants on Node.js: job-matching pipelines,
+structured-output prompting, browser automation with Playwright. My core stack is Vue and Node.js;
+with AI coding tools I deliver in other stacks as well.</p>
+
+<h2>Experience</h2>
+
+<div class="job">
+  <div class="job-head">
+    <div><span class="job-title">Frontend Developer</span> — <span class="job-company">ElService LLC (e-commerce)</span></div>
+    <div class="job-dates">Jan 2026 – May 2026</div>
+  </div>
+  <ul>
+    <li>Built an online store web app from scratch on Vue / Nuxt 4: catalog, cart, checkout; component architecture, Pinia, REST API.</li>
+    <li>Maintained and extended a legacy e-commerce codebase: new features, bug fixes, refactoring.</li>
+    <li>Developed a Telegram Mini App integrated with the backend via REST API.</li>
+    <li>Integrated payments (YooKassa, CDEK Pay — webhooks, payment statuses), maps and logistics (Yandex Maps, CDEK pickup points and delivery cost).</li>
+    <li>Store theming system, responsive layout; Docker, Nginx and environment deployment.</li>
+  </ul>
+  <div class="stack">Nuxt 4 · Vue 3 · Pinia · REST API · Telegram Mini Apps · Docker · Nginx</div>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <div><span class="job-title">Frontend Developer / Team Lead</span> — <span class="job-company">VSL (web studio)</span></div>
+    <div class="job-dates">Oct 2022 – Dec 2025</div>
+  </div>
+  <ul>
+    <li>Led a frontend team of up to 5 developers: architecture, code review, mentoring, task planning.</li>
+    <li>Delivered commercial SPA/SSR projects end to end — from client communication and business logic to build and deployment.</li>
+    <li>SEO and performance: Lighthouse / PageSpeed and Core Web Vitals improvements, code splitting, bundle and image optimization.</li>
+    <li>Authentication (JWT, OAuth), middleware, admin panels.</li>
+    <li>Integrations: payments, Yandex Maps, OpenStreetMap, Yandex Metrica, Google Analytics, EmailJS, third-party APIs.</li>
+  </ul>
+  <div class="stack">Vue 3 · Nuxt · Vite · JWT · OAuth · Figma · Docker · Nginx</div>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <div><span class="job-title">Frontend Developer</span> — <span class="job-company">KONAR (industrial manufacturer)</span></div>
+    <div class="job-dates">Oct 2023 – Apr 2025</div>
+  </div>
+  <ul>
+    <li>Built interfaces of corporate SPA/SSR web applications and admin systems in an Agile team (sprints, stand-ups).</li>
+    <li>Real-time client–server communication via REST API and WebSocket.</li>
+    <li>Authentication and access-control modules, internal microservices; bundle optimization, Docker and Nginx infrastructure.</li>
+  </ul>
+  <div class="stack">Vue 3 · SPA / SSR · REST API · WebSocket · Docker · Nginx</div>
+</div>
+
+<div class="job">
+  <div class="job-head">
+    <div><span class="job-title">Freelance Web Developer</span></div>
+    <div class="job-dates">Jul 2020 – Nov 2020</div>
+  </div>
+  <ul>
+    <li>Pixel-perfect landing pages from Figma: responsive, cross-browser; worked directly with clients.</li>
+  </ul>
+</div>
+
+<h2>AI Projects (own, used daily)</h2>
+<ul>
+  <li><b>Job-matching assistant for hh.ru</b> — an LLM (Groq: Qwen, GPT-OSS) scores vacancies against my profile and writes cover letters; results go to a Telegram bot with inline actions. Node.js, Fastify, PostgreSQL, Prisma, Docker.</li>
+  <li><b>Telegram channel parser</b> — reads channels via Telegram API, keyword pre-filtering, LLM scoring and reply drafting, sending through Telegram Web automated with Playwright.</li>
+  <li><b>Auto-apply assistants</b> for job boards and a Kwork order monitor — Playwright browser automation plus LLM evaluation.</li>
+  <li>Prompt engineering: system prompts with JSON output, response validation, retries, model switching on rate limits; OpenAI-compatible APIs (Groq, OpenRouter) and Claude.</li>
+</ul>
+
+<h2>Skills</h2>
+<div class="skills">
+  <div><b>Frontend</b> Vue 3, Nuxt 3/4, Composition API, Pinia, Vue Router, JavaScript (ES6+), TypeScript, Vite, HTML, CSS/Sass, SSR/SSG, i18n</div>
+  <div><b>Backend</b> Node.js, Fastify, PostgreSQL, MySQL, Prisma, REST API, WebSocket</div>
+  <div><b>AI</b> LLM APIs, prompt engineering, structured outputs, AI agents and automations, Claude Code, Cursor</div>
+  <div><b>Tooling</b> Git, Docker, Docker Compose, Nginx, CI/CD, Playwright, Figma</div>
+  <div><b>Languages</b> Russian — native; English — conversational</div>
+</div>
+
+</body>
+</html>
